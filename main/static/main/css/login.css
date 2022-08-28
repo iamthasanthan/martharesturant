@@ -1,0 +1,98 @@
+.loginpage{
+    margin-top: 0px !important;
+    margin: auto;
+    background-repeat: no-repeat;
+    
+    /* width: 50%; */
+}
+.loginpage h3{
+    font-weight: 200;
+font-size: 25px;
+line-height: 30px;
+/* identical to box height */
+
+
+color: #162951;
+}
+.loginpage .card{
+
+    margin-top: auto;
+    width: 300px;
+    height: 773px;
+}
+
+.loginpage .card h1{
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 100px;
+    /* identical to box height */
+    
+    
+    color: #162951;
+    
+    text-shadow: 16.5634px 5.52113px 27.6056px rgba(0, 0, 0, 0.08);
+}
+.loginpage .inputcontainer{
+
+}
+.loginpage .inputcontainer input{
+    width: 100%;
+    border: none; /* Removes the default border */
+
+    font-weight: 300;
+font-size: 25px;
+line-height: 38px;
+
+color: #162951;
+
+border-bottom: 1px solid #162951 !important;
+margin-bottom: 50px;
+}
+
+.loginpage .inputcontainer input {
+  }
+  
+  input:focus {
+    outline: none /* Removes the border when the input is clicked */
+  }
+
+.loginpage .buttoncontainer{
+
+}
+
+
+.loginpage .buttoncontainer #login {
+    margin-top: 20px;
+    align-items: center;
+
+    width: 240px;
+    height: 60px;
+
+
+    background: #162951;
+    border-radius: 242.099px;
+    padding-top: 3px;
+    box-shadow: 37.9762px 16.4564px 32.9127px rgba(0, 0, 0, 0.25);
+}   
+.loginpage .buttoncontainer #login:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+  .loginpage .buttoncontainer #login p {
+    
+    margin-top: 9px !important;
+
+    font-family: 'General Sans Variable';
+    
+    font-weight: 400;
+    font-size: 30px;
+    color: #FFFFFF;
+
+  }
+  .loginpage .buttoncontainer  a{
+    color: #ffffff;
+
+    font-size: 30px;
+  }
+

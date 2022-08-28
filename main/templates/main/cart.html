@@ -1,0 +1,77 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/cart.css' %}" type="text/css">
+
+<div class="mycart">
+    <h1>My Cart</h1>
+    <div class="maindishes_cards">
+        {% for maindish in user_cart.maindish.all %}
+          
+        
+        <div class="maindish">
+            <img src="{{maindish.image.url}}" class="maindishimage">
+            <center>
+            <h1>{{maindish.name}}</h1>
+            <h2>Rs.{{maindish.price}}</h2></center>
+            <div class="left" id="removecart">
+                <a href="{% url 'remove_cart_item' food_type='maindish' food_id=maindish.id %}" style="text-decoration:none; color: white;">
+                <div class="button">
+                    <h4>Remove</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="maindishes_cards">
+        {% for sidedish in user_cart.sidedishes.all %}
+          
+        
+        <div class="sidedish">
+            <img src="{{sidedish.image.url}}" class="sidedishimage">
+            <center>
+            <h1>{{sidedish.name}}</h1>
+            <h2>Rs.{{sidedish.price}}</h2></center>
+            <div class="left" id="removecart">
+                <a href="{% url 'remove_cart_item' food_type='sidedish' food_id=sidedish.id %}" style="text-decoration:none; color: white;">
+                <div class="button">
+                    <h4>Remove</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="maindishes_cards">
+        <div class="leftbutton">
+
+        </div>
+        {% for dessert in user_cart.desserts.all %}
+          
+        
+        <div class="dessert">
+            <img src="{{dessert.image.url}}" class="dessertimage">
+            <center>
+            <h1>{{dessert.name}} - Rs.{{dessert.price}}</h1>
+            </center>
+            <div class="left" id="removecart">
+                <a href="{% url 'remove_cart_item' food_type='dessert' food_id=dessert.id %}" style="text-decoration:none; color: white;">
+                <div class="button">
+                    <h4>Remove</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <center>
+        <a>
+            <div class="placeorder">
+                <h3>Place Order</h3>
+            </div>
+        </a>
+    </center>
+    
+
+</div>
+{% endblock content %}

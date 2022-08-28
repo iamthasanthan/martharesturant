@@ -1,0 +1,72 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+<div class="home_landing">
+    <h1>Main Dishes</h1>
+    <div class="maindishes_cards">
+        {% for maindish in maindishes %}
+          
+        
+        <div class="maindish">
+            <img src="{{maindish.image.url}}" class="maindishimage">
+            <center>
+            <h1>{{maindish.name}}</h1>
+            <h2>Rs.{{maindish.price}}</h2></center>
+            <div class="left">
+                <a href="{% url 'add_cart' food_type='maindish' food_id=maindish.id %}" style="text-decoration:none; color: black;">
+                <div class="button">
+                    <h4>Add to Cart</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'maindishes' %}" style="float: right; margin-right: 4rem;font-size: 2rem; text-decoration: none; color: black; ">See More =></a>
+    <br/>
+    <br/>
+    <h1>Side Dishes</h1>
+    <div class="maindishes_cards">
+        {% for sidedish in sidedishes %}
+          
+        
+        <div class="sidedish">
+            <img src="{{sidedish.image.url}}" class="sidedishimage">
+            <center>
+            <h1>{{sidedish.name}}</h1>
+            <h2>Rs.{{sidedish.price}}</h2></center>
+            <div class="left">
+                <a href="{% url 'add_cart' food_type='sidedish' food_id=sidedish.id %}" style="text-decoration:none; color: black;">
+                <div class="button">
+                    <h4>Add to Cart</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'sidedishes' %}" style="float: right; margin-right: 4rem;font-size: 2rem; text-decoration: none; color: black; ">See More =></a>
+    <br/>
+    <br/>
+    <h1>Desserts</h1>
+    <div class="maindishes_cards">
+        {% for dessert in desserts %}
+          
+        
+        <div class="dessert">
+            <img src="{{dessert.image.url}}" class="dessertimage">
+            <center>
+            <h1>{{dessert.name}} - Rs.{{dessert.price}}</h1>
+            </center>
+            <div class="left">
+                <a href="{% url 'add_cart' food_type='dessert' food_id=dessert.id %}" style="text-decoration:none; color: black;">
+                <div class="button">
+                    <h4>Add to Cart</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'desserts' %}" style="float: right; margin-right: 4rem;font-size: 2rem; text-decoration: none; color: black; ">See More =></a>
+    <br/>
+    <br/>
+</div>
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}" type="text/css">
+  <div class="loginpage">
+    <center>
+    <div class="card">
+        <h1 style="    line-height: 30px;
+        ">Signup</h1>
+
+        {% for message in messages %}
+        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %} style="list-style: none; color:red;"> {{ message }} </li>
+        <br/>
+        {% endfor %}
+        <form method="post" id="form1">
+          {% csrf_token %}
+
+        <div class="inputcontainer" style="margin-top: 30px;">
+            <input name="email" type="email" placeholder="Email" style="margin-bottom:20px;">
+            <input name="username" type="text" placeholder="Name" style="margin-bottom:20px;">
+            <input name="phone" type="tel" placeholder="Phone Number" style="margin-bottom:20px;">
+            <input name="password" type="password" placeholder="Password" style="margin-bottom:30px;">
+        </div>
+        
+        <div class="buttoncontainer"  >
+            <!-- <h2>What are the problems with our</h2> -->
+      
+            <a href="javascript:;" onclick="document.getElementById('form1').submit();"><h3 id="login"><center><p >Register</p></center></h3></a>
+    
+            
+        </div>
+        </form>
+        <h3 ><a href="{% url 'login' %}" style="">Already have an account?</a></h3>
+    </div></center>
+  </div>
+{% endblock content %}

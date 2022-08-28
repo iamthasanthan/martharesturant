@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+<div class="home_landing">
+
+    <h1>Side Dishes</h1>
+    <div class="maindishes_cards">
+        {% for sidedish in sidedishes %}
+          
+        
+        <div class="sidedish">
+            <img src="{{sidedish.image.url}}" class="sidedishimage">
+            <center>
+            <h1>{{sidedish.name}}</h1>
+            <h2>Rs.{{sidedish.price}}</h2></center>
+            <div class="left">
+                <a href="/" style="text-decoration:none; color: black;">
+                <div class="button">
+                    <h4>Add to Cart</h4>
+                </div></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}

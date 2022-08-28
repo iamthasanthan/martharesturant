@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inika', serif;
+    font-weight: 400;
+    margin: 0;
+
+}
+.home_landing{
+
+}
+.home_landing h1{
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: calc(30px + 1.5vw);
+line-height: 40px;
+}
+.maindishes_cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+.maindish{
+    margin: 66px;
+    margin-top: 20px !important;
+    margin-left: 40px !important;
+    width: 304px;
+min-height: 420px;
+align-items: center;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+
+}
+.maindish:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    
+}
+
+.maindish img{
+    margin: 30px;
+    margin-bottom: 10px !important;
+    width: 238px;
+height: 173px;
+
+border-radius: 37px;
+}
+.maindish h1{
+line-height: 10px;
+}
+.maindish h2{
+    
+}
+.maindish .left{
+    float: right;
+    margin-right: 1.5rem;
+
+}
+.maindish .left .button{
+    background-color: bisque;
+    padding: 1px 20px;
+    width: fit-content;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+
+}
+.maindish .left .button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.maindish .left .button h4{
+    line-height: 0px;
+}
+
+
+.sidedish{
+    margin: 66px;
+    margin-top: 20px !important;
+    width: 228px;
+min-height: 237px;
+align-items: center;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+
+}
+.sidedish:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    
+}
+
+.sidedish img{
+    margin: 36px;
+    margin-bottom: 10px !important;
+    width: 157px;
+    height: 97px;
+
+    border-radius: 23px;
+}
+.sidedish h1{
+line-height: 10px;
+font-weight: 400;
+font-size: 29px;
+}
+.sidedish h2{
+    font-weight: 400;
+    line-height: 10px;
+font-size: 19px;
+}
+.sidedish .left{
+    float: right;
+    margin-right: 1.5rem;
+
+}
+.sidedish .left .button{
+    background-color: bisque;
+    padding: 1px 20px;
+    width: fit-content;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+
+}
+.sidedish .left .button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.sidedish .left .button h4{
+    line-height: 0px;
+}
+
+
+
+
+
+.dessert{
+    margin: 66px;
+    margin-top: 20px !important;
+    width: 228px;
+min-height: 237px;
+align-items: center;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+
+}
+.dessert:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    
+}
+
+.dessert img{
+    margin: 36px;
+    margin-bottom: 10px !important;
+    width: 158.79px;
+height: 117px;
+
+border-radius: 24px;
+}
+.dessert h1{
+line-height: 10px;
+font-weight: 400;
+font-size: 19px;
+
+}
+.dessert h2{
+    font-weight: 400;
+    line-height: 10px;
+font-size: 19px;
+}
+.dessert .left{
+    float: right;
+    margin-right: 1.5rem;
+
+}
+.dessert .left .button{
+    background-color: bisque;
+    padding: 1px 20px;
+    width: fit-content;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+
+}
+.dessert .left .button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.dessert .left .button h4{
+    line-height: 0px;
+}
+
+
+
+/************************** navbar ***********************************/
+
+
+
+/************************** navbar ***********************************/
+
+
+.modernnavbar{
+    z-index: 999999999;
+    /* overflow: hidden; */
+    max-width:100%;
+}
+.modernnavbar header a {
+    text-decoration: none;
+  }
+  
+  .modernnavbar header {
+    padding: 0 20px;
+    background-color: #fff;
+    height: 112px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  .modernnavbar #brand {
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .modernnavbar #brand img {
+    width: 140.99px;
+
+    height: 80px;
+    margin-left: 130px;
+  }
+
+  
+  .modernnavbar #brand a {
+    color: #09c372;
+  }
+  .modernnavbar nav{
+  }
+  .modernnavbar ul {
+    margin-right: 150px;
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  
+  .modernnavbar ul a {
+
+    color: #162951;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .modernnavbar ul li {
+    /* padding:  5px; */
+    margin-left: 80px;
+  }
+  
+  .modernnavbar ul li:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+  
+  
+  .modernnavbar #signup {
+    border-radius: 5px;
+  }
+  
+  .modernnavbar #login {
+
+    align-items: center;
+
+    width: 169px;
+    height: 53px;
+
+
+    background: #091020;
+    border-radius: 242.099px;
+}   
+
+  .modernnavbar #login p {
+    margin-top: 12px;
+
+    font-family: 'General Sans Variable';
+    
+    font-weight: 400;
+    font-size: 21.4603px;
+    color: #FFFFFF;
+
+  }
+  .modernnavbar #login p a{
+    color: #ffffff;
+    font-size: 20px;
+  }
+  
+  .modernnavbar #hamburger-icon {
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+    z-index: 999999999999;
+    
+  }
+  
+  .modernnavbar #hamburger-icon div {
+    width: 35px;
+    height: 3px;
+    background-color:#162951;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .modernnavbar .open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  
+  .modernnavbar .open .bar2 {
+    opacity: 0;
+  }
+  
+  .modernnavbar .open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+  }
+  
+  .modernnavbar .open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    
+    margin-top: 50px;
+  }
+  
+  .modernnavbar .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height:max-content; 
+    width: 100%;
+  }
+  
+  .modernnavbar .mobile-menu li {
+    margin-bottom: 10px;
+  }
+  
+  @media only screen and (max-width: 1250px) {
+  
+
+    .modernnavbar header nav {
+      display: none;
+    }
+  
+    .modernnavbar #hamburger-icon {
+      display: block;
+    }
+    .modernnavbar #brand img {
+        margin-left: 50px;
+    }
+    .modernnavbar ul li {
+        /* padding:  5px; */
+        margin-left: 0px;
+        margin-top: 20px;
+      }
+      
+  }
+
