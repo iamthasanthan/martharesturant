@@ -14,7 +14,7 @@
             <h1>{{dessert.name}} - Rs.{{dessert.price}}</h1>
             </center>
             <div class="left">
-                <a href="/" style="text-decoration:none; color: black;">
+                <a href="{% url 'add_cart' food_type='dessert' food_id=dessert.id %}" style="text-decoration:none; color: black;">
                 <div class="button">
                     <h4>Add to Cart</h4>
                 </div></a>

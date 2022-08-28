@@ -222,7 +222,7 @@ font-size: 19px;
   
   .modernnavbar #brand {
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(15px + 1.5vw);
     display: flex;
     align-items: center;
   }
@@ -235,7 +235,7 @@ font-size: 19px;
 
   
   .modernnavbar #brand a {
-    color: #09c372;
+    color: #1f242279;
   }
   .modernnavbar nav{
   }

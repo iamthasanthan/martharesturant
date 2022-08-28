@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth import get_user_model
+from orders.models import Order, OrderProduct
 
 from users.models import Profile
 
@@ -107,3 +108,80 @@ def sidedishes(request):
         'sidedishes': sidedishes,
     }
     return render(request, 'main/sidedishes.html', context=context)
+
+
+@login_required(login_url='login')
+def myorders(request):
+    myorders = OrderProduct.objects.filter(
+        user=request.user.profile).order_by('-created_at')
+    context = {
+        'myorders': myorders,
+    }
+    return render(request, 'main/myorders.html', context=context)
+
+
+@login_required(login_url='login')
+def orderdetail(request, order_id):
+    order = OrderProduct.objects.filter(
+        id=order_id).first()
+    context = {
+        'order': order,
+    }
+    return render(request, 'main/orderdetail.html', context=context)
+
+
+@login_required(login_url='login')
+def complete_order(request, order_id):
+    order_p = OrderProduct.objects.filter(id=order_id).first()
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address_line_1 = request.POST.get('address_line_1')
+        address_line_2 = request.POST.get('address_line_2')
+        order_note = request.POST.get('order_note')
+        order = order_p.order
+        order.first_name = first_name
+        order.last_name = last_name
+        order.email = email
+        order.phone = phone
+        order.address_line_1 = address_line_1
+        order.address_line_2 = address_line_2
+        order.order_note = order_note
+        order.status = "Ordered"
+        order.save()
+        order_p.ordered = True
+        order_p.save()
+        return redirect('myorders')
+    context = {
+        'order': order_p,
+    }
+    return render(request, 'main/completeorder.html', context=context)
+
+
+@login_required(login_url='login')
+def waiterportal(request):
+    if request.user.profile.user_type == "Waitor":
+        orders = OrderProduct.objects.exclude(
+            order__status="New").order_by('-created_at')
+        context = {
+            'orders': orders,
+        }
+        return render(request, 'main/waiterdashboard.html', context=context)
+    else:
+        return redirect('home')
+
+
+@login_required(login_url='login')
+def update_order(request, order_id):
+    if request.user.profile.user_type == "Waitor":
+        order_p = OrderProduct.objects.get(id=order_id)
+        if request.method == "POST":
+            status = request.POST.get('status')
+            order = Order.objects.filter(id=order_p.order.id).first()
+            order.status = status
+            order.save()
+        return redirect('waiterportal')
+    else:
+        return redirect('home')

@@ -13,7 +13,7 @@
             <h1>{{maindish.name}}</h1>
             <h2>Rs.{{maindish.price}}</h2></center>
             <div class="left">
-                <a href="/" style="text-decoration:none; color: black;">
+                <a href="{% url 'add_cart' food_type='maindish' food_id=maindish.id %}" style="text-decoration:none; color: black;">
                 <div class="button">
                     <h4>Add to Cart</h4>
                 </div></a>

@@ -1,0 +1,79 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid #ddd;
+      border-radius: 3rem;
+      margin: 20px;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even){background-color: #f2f2f2}
+    </style>
+<link rel="stylesheet" href="{% static 'main/css/waiterdashboard.css' %}" type="text/css">
+<div class="myorders">
+    
+    <center>
+
+    
+        <h1>Waiter Dashboard</h1>
+        <div style="overflow-x:auto;">
+            <table>
+              <tr>
+                <th>Order Number</th>
+                <th>Date</th>
+                <th>Order Status</th>
+                <th>Phone</th>
+                <th>Order Detail</th>
+                <th>Total Amount</th>
+              </tr>    
+              {% for order in orders %}
+              <tr>
+                <td>{{order.order.order_number}}</td>
+                <td>{{order.created_at}}</td>
+                {% if order.order.status == "Ordered" %}
+                     <td style="color: rgb(231, 40, 222);">{{order.order.status}}</td>
+                
+                {% elif order.order.status == "Accepted" %}
+                <td style="color: rgb(8, 8, 8);">{{order.order.status}}</td>
+                
+                {% elif order.order.status == "Completed" %}
+                <td style="color: rgb(91, 231, 40);">{{order.order.status}}</td>
+                
+                {% elif order.order.status == "Cancelled" %}
+                <td style="color: rgb(231, 40, 40);">{{order.order.status}}</td>
+                {% endif %}
+           
+                <td>{{order.order.phone}}</td>
+                <td><a href="{% url 'orderdetail' order.id %}">View Detail</a></td>
+                <td>{{order.product_price}}</td>
+                <td>
+                    <form method="post" action="{% url 'updateorder' order.id %}">
+                        {% csrf_token %}
+                        <select name="status" onChange="form.submit();">
+                            <option value="">---</option>
+
+                            <option value="Accepted">Accept</option>
+                            <option value="Completed">Complete</option>
+                            <option value="Cancelled">Cancel</option>
+
+                        </select>
+                    </form>
+                </td>
+              </tr>
+             {% endfor %}
+            </table>
+          </div>
+    </center>
+    </div>
+{% endblock %}

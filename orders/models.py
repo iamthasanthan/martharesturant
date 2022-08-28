@@ -20,6 +20,7 @@ class Payment(models.Model):
 class Order(models.Model):
     STATUS = (
         ('New', 'New'),
+        ('Ordered', 'Ordered'),
         ('Accepted', 'Accepted'),
         ('Completed', 'Completed'),
         ('Cancelled', 'Cancelled'),
@@ -54,7 +55,7 @@ class Order(models.Model):
         return f'{self.address_line_1} {self.address_line_2}'
 
     def __str__(self):
-        return self.first_name
+        return self.order_number + '-' + self.user.user.username
 
 
 class OrderProduct(models.Model):
@@ -72,4 +73,4 @@ class OrderProduct(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.maindish + '-' + self.user.user.username
+        return self.order.order_number + '-' + self.user.user.username

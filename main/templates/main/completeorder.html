@@ -1,0 +1,111 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .completeorder .inputs .field{
+    align-items: center;
+    margin-bottom: 60px;
+
+}
+.completeorder .inputs .field h1{
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 38px;
+    
+    color: rgba(22, 41, 81, 0.9);
+
+}
+.completeorder .inputs .field input{
+    border: none;
+    font-size: 25px;
+    color: rgba(22, 41, 81, 0.9);
+padding-left: 10px;
+
+min-width: 340px;
+height: 45px;
+
+
+background: rgba(22, 41, 81, 0.03);
+border: 1px solid #162951;
+border-radius: 32px;
+}
+
+.completeorder .placeorder{
+    color: white;
+    width: fit-content;
+    padding:0px 20px;
+height: 71px;
+
+background: #0057FF;
+box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.25);
+border-radius: 36px;
+}
+.completeorder .placeorder h3{
+    padding-top: 14px;
+    font-weight: 700;
+font-size: 33px;
+line-height: 43px;
+/* identical to box height */
+
+text-align: center;
+letter-spacing: 0.11em;
+}
+.completeorder a{
+    text-decoration: none;
+
+}
+.completeorder a:hover{
+    cursor: pointer;
+    
+}
+
+</style>
+<div class="completeorder">
+    <h1 style="margin:20px;">Complete Order</h1>
+    <h3 style="margin:20px;">#{{order.order.order_number}}</h3>
+    <form method="post" id="postForm">
+        {% csrf_token %}
+    <div class="inputs" style="padding:20px;display: flex; flex-wrap:wrap;justify-content:space-between;">
+       
+        <div class="field">
+            <input name="first_name" type="text" value="{{request.user.first_name}}" placeholder="First Name" required>
+        </div>
+        <div class="field">
+            <input name="last_name" type="text" placeholder="Last Name" required>
+        </div>
+        <div class="field">
+            <input name="email" type="text" placeholder="Email" required>
+        </div>
+        <div class="field">
+            <input name="phone" type="text" placeholder="Phone No." required>
+        </div>
+        <div class="field">
+            <input name="address_line_1" type="text" placeholder="Address Line 1" required>
+        </div>
+        <div class="field">
+            <input name="address_line_2" type="text" placeholder="Address Line 2" >
+        </div>
+        <div class="field">
+            <input name="order_note" type="text" placeholder="Order Note">
+        </div>
+    </div>
+        <center>
+            
+            <a href="#" onclick="Submit()">
+                <div class="placeorder">
+                    <h3>Complete Order</h3>
+                </div>
+            </a>
+        </center>
+        <br/>
+    </form>
+</div>
+<script>
+    function Submit(){
+        document.getElementById('postForm').submit(); 
+        return false
+    }
+</script>
+{% endblock content %}

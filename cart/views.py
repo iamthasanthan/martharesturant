@@ -28,15 +28,18 @@ def add_cart(request, food_type, food_id):
     if food_type == "maindish":
         dish = Maindish.objects.get(id=food_id)
         user_cart.maindish.add(dish)
+        user_cart.quantity = user_cart.quantity + 1
         user_cart.save()
     elif food_type == "sidedish":
         dish = Sidedish.objects.get(id=food_id)
         user_cart.sidedishes.add(dish)
+        user_cart.quantity = user_cart.quantity + 1
         user_cart.save()
 
     elif food_type == "dessert":
         dish = Dessert.objects.get(id=food_id)
         user_cart.desserts.add(dish)
+        user_cart.quantity = user_cart.quantity + 1
         user_cart.save()
 
     return redirect('cart')
@@ -49,15 +52,18 @@ def remove_cart_item(request, food_type, food_id):
     if food_type == "maindish":
         dish = Maindish.objects.get(id=food_id)
         user_cart.maindish.remove(dish)
+        user_cart.quantity = user_cart.quantity - 1
         user_cart.save()
     elif food_type == "sidedish":
         dish = Sidedish.objects.get(id=food_id)
         user_cart.sidedishes.remove(dish)
+        user_cart.quantity = user_cart.quantity - 1
         user_cart.save()
 
     elif food_type == "dessert":
         dish = Dessert.objects.get(id=food_id)
         user_cart.desserts.remove(dish)
+        user_cart.quantity = user_cart.quantity - 1
         user_cart.save()
     return redirect('cart')
 
@@ -71,7 +77,7 @@ def remove_cart_item(request, food_type, food_id):
 #             cart = Cart.objects.get(cart_id=_cart_id(request))
 #             cart_item = CartItem.objects.get(
 #                 product=product, cart=cart, id=cart_item_id)
-#         if cart_item.quantity > 1:
+#         if cartview_item.quantity > 1:
 #             cart_item.quantity -= 1
 #             cart_item.save()
 #         else:

@@ -1,0 +1,134 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/orderdetail.css' %}" type="text/css">
+
+<div class="card">
+    <div class="title" style="display: flex;justify-content: space-between; ">
+        
+        <h2>Order Details</h2>
+        {% if order.order.status == "New" %}
+        <a href="{% url 'complete_order' order.id %}" style="background-color: rgba(0, 140, 255, 0.309); height:fit-content; padding:10px; border-radius:3rem;text-decoration: none;">Complete Order</a>
+
+        {% elif order.order.status == "Ordered" %}
+        <a style="background-color: rgba(255, 242, 0, 0.309); height:fit-content; padding:10px; border-radius:3rem;">Ordered</a>
+
+        {% elif order.order.status == "Accepted" %}
+        <a style="background-color: rgba(55, 255, 0, 0.309); height:fit-content; padding:10px; border-radius:3rem;">Accepted</a>
+
+        {% elif order.order.status == "Completed" %}
+        <a style="background-color: rgba(0, 255, 17, 0.309); height:fit-content; padding:10px; border-radius:3rem;">Completed</a>
+
+        {% elif order.order.status == "Cancelled" %}
+            <a style="background-color: rgba(255, 0, 0, 0.309); height:fit-content; padding:10px; border-radius:3rem;">Cancelled</a>
+        {% endif %}
+       
+    </div>
+    <div class="info">
+        <div class="row">
+            <div class="col-7">
+                <span id="heading">Date: </span>
+                <span id="details">{{order.created_at.date}}</span>
+            </div>
+            <div class="col-5 pull-right">
+                <span id="heading">Order No.: </span>
+                <span id="details">{{order.order.order_number}}</span>
+            </div>
+        </div>      
+    </div>      
+    <div class="pricing">
+        <h4 style="margin-bottom: 10px;">Main Dish</h4>
+        {% for x in order.maindish.all  %}
+        <div class="row" style="display: flex;justify-content: space-between; ">
+            <div class="col-9">
+                <span id="name">{{x.name}}</span>  
+            </div>
+            <div class="col-3">
+                <span id="price">Rs.{{x.price}}</span>
+            </div>
+        </div>
+        {% endfor %}
+        <h4 style="margin-bottom: 10px;">Side Dishes</h4>
+
+        {% for x in order.sidedishes.all  %}
+        <div class="row" style="display: flex;justify-content: space-between; ">
+            <div class="col-9">
+                <span id="name">{{x.name}}</span>  
+            </div>
+            <div class="col-3">
+                <span id="price">Rs.{{x.price}}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+        <h4 style="margin-bottom: 10px;">Desserts</h4>
+
+        {% for x in order.desserts.all  %}
+        <div class="row" style="display: flex;justify-content: space-between; ">
+            <div class="col-9">
+                <span id="name">{{x.name}}</span>  
+            </div>
+            <div class="col-3">
+                <span id="price">Rs.{{x.price}}</span>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- <div class="row">
+            <div class="col-9">
+                <span id="name">Shipping</span>
+            </div>
+            <div class="col-3">
+                <span id="price">&pound;33.00</span>
+            </div>
+        </div> -->
+    </div>
+    <div class="total" >
+        <div class="row" style="display: flex;justify-content: space-between; margin-bottom: 2rem;">
+            <div class="col-9"><h2>Total</h2></div>
+            <div class="col-3"><h2>Rs.{{order.product_price}}</h2></div>
+        </div>
+    </div>
+    <div class="tracking">
+        <div class="title">Tracking Order</div>
+    </div>
+    <div class="progress-track">
+        <ul id="progressbar">
+            {% if order.order.status == "New" %}
+              <li class="step0 active " id="step1">Confirm ORder</li>
+
+            {% elif order.order.status == "Ordered" %}
+            <li class="step0 active " id="step1">Confirm ORder</li>
+              <li class="step0 active text-center " id="step2">Ordered</li>
+        
+
+            {% elif order.order.status == "Accepted" %}
+            <li class="step0 active " id="step1">Confirm ORder</li>
+            <li class="step0 active text-center " id="step2">Ordered</li>
+      
+              <li class="step0 active text-right " id="step3">Accepted</li>
+            {% elif order.order.status == "Completed" %}
+            <li class="step0 active " id="step1">Confirm ORder</li>
+            <li class="step0 active text-center " id="step2">Ordered</li>
+            <li class="step0 active text-right " id="step3">Accepted</li>
+            <li class="step0 active text-right" id="step4">Completed</li>
+            
+
+         
+            {% else %}
+            <li class="step0  " id="step1">Confirm ORder</li>
+            <li class="step0  text-center " id="step2">Ordered</li>
+            <li class="step0  text-right " id="step3">Accepted</li>
+            <li class="step0  text-right" id="step4">Completed</li>
+            
+
+            {% endif %}
+           
+        </ul>
+    </div>
+    
+
+    
+</div>
+{% endblock content %}

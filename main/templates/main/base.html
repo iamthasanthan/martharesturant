@@ -17,6 +17,10 @@
     {% include "main/navbar.html" %}
 
     <div class="container">
+        {% for message in messages %}
+        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %} style="list-style: none; color:red;"> {{ message }} </li>
+        <br/>
+        {% endfor %}
         {% block content %}
           
         {% endblock content %}

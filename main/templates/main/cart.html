@@ -6,6 +6,14 @@
 <div class="mycart">
     <h1>My Cart</h1>
     <div class="maindishes_cards">
+
+        {% if not user_cart.maindish.count > 0 %}
+        <div class="custommessage" style="margin: 30px;">
+            <a href="{% url 'maindishes' %}">
+            <h3>Choose a MainDish from our Menu=></h3>
+</a>
+        </div>
+        {% endif %}
         {% for maindish in user_cart.maindish.all %}
           
         
@@ -25,6 +33,13 @@
     </div>
     <hr>
     <div class="maindishes_cards">
+        {% if not user_cart.sidedishes.count > 0 %}
+        <div class="custommessage" style="margin: 30px;">
+            <a href="{% url 'sidedishes' %}">
+            <h3>Choose a SideDish from our Menu=></h3>
+</a>
+        </div>
+        {% endif %}
         {% for sidedish in user_cart.sidedishes.all %}
           
         
@@ -44,9 +59,13 @@
     </div>
     <hr>
     <div class="maindishes_cards">
-        <div class="leftbutton">
-
+        {% if not user_cart.desserts.count > 0 %}
+        <div class="custommessage" style="margin: 30px;">
+            <a href="{% url 'desserts' %}">
+            <h3>Choose a Dessert from our Menu=></h3>
+</a>
         </div>
+        {% endif %}
         {% for dessert in user_cart.desserts.all %}
           
         
@@ -65,7 +84,7 @@
         {% endfor %}
     </div>
     <center>
-        <a>
+        <a href="{% url 'place_order' %}">
             <div class="placeorder">
                 <h3>Place Order</h3>
             </div>
